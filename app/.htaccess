@@ -1,0 +1,8 @@
+# App de IMEDIAM: tipos de archivo para que el celular la reconozca como app.
+AddType application/manifest+json .webmanifest
+<IfModule mod_headers.c>
+  # El service worker y la página siempre frescos, para que los cambios lleguen enseguida.
+  <FilesMatch "^(sw\.js|index\.html|manifest\.webmanifest)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

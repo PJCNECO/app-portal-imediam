@@ -1,3 +1,47 @@
+# App de IMEDIAM desde la página principal (rama `sitio-principal`)
+
+Esta rama prepara la app para instalarla desde https://imediagnostico.com,
+la página principal de IMEDIAM, en vez de desde el portal. Queda en
+**https://imediagnostico.com/app/** y no toca nada del resto del sitio.
+
+## Para quien administra imediagnostico.com
+
+El sitio está hecho con WordPress. Son dos pasos y no hace falta instalar
+ningún plugin.
+
+### 1. Subir la carpeta `app/`
+
+Subir la carpeta `app/` completa (con el archivo oculto `.htaccess` que tiene
+adentro) a la raíz del sitio, al lado de `wp-content`, por FTP o con el
+administrador de archivos del hosting (por ejemplo, en `public_html/`).
+Tiene que quedar así:
+
+- https://imediagnostico.com/app/
+- https://imediagnostico.com/app/manifest.webmanifest
+- https://imediagnostico.com/app/sw.js
+
+WordPress no interfiere: las carpetas que existen se sirven tal cual.
+
+### 2. Poner el botón en la página principal
+
+En WordPress, editar la página de inicio, agregar un bloque **HTML
+personalizado** y pegar el contenido de `boton-para-la-web.html`. Muestra el
+ícono, un texto corto y el botón "Abrir la app", que lleva a /app/. Ahí el
+cartel de la app explica cómo instalarla en Android y en iPhone.
+
+### Para probar
+
+Abrir https://imediagnostico.com/app/ desde el celular: en Android (Chrome)
+aparece el cartel con el botón **Instalar**; en iPhone (Safari), Compartir y
+**Agregar a inicio**.
+
+### Para actualizar la app más adelante
+
+Volver a generar la carpeta con `python3 armar-version.py app
+https://imediagnostico.com/app/` y subirla de nuevo, reemplazando la anterior.
+
+---
+
 # App de IMEDIAM (PWA) - instalación
 
 Con estos archivos, https://app.imediagnostico.com se puede instalar en el
