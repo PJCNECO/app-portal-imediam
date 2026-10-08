@@ -1,0 +1,22 @@
+<!-- Pegar dentro del <head> de TODAS las paginas del portal (o al menos /login) -->
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0b5cab">
+
+<!-- iPhone / iPad -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IMEDIAM">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+
+<!-- Pegar antes de </body> -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
+</script>
+
+<!-- Opcional: cartel "Instalar la app" en la pagina de login. Pegar tambien antes de </body> -->
+<script src="/instalar-app.js" defer></script>
