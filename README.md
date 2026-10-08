@@ -1,3 +1,9 @@
+> **Decisión (oct 2026):** la app se instala desde la página principal,
+> https://imediagnostico.com/app/ (ver la rama `sitio-principal`). En el portal
+> **no** se instalan estos archivos: solo se agrega en el login el enlace de
+> `enlace-portal.html`, que lleva a la app. El resto de este README queda como
+> referencia por si algún día se decide instalarla también en el portal.
+
 # App de IMEDIAM (PWA) - instalación
 
 Con estos archivos, https://app.imediagnostico.com se puede instalar en el
