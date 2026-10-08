@@ -29,8 +29,9 @@ instalada, y si la persona lo cierra no vuelve a salir por 30 días.
 
 ### 3. Íconos
 
-Los de la carpeta `icons/` son PROVISORIOS (letras "IM" sobre azul). Hay que
-reemplazarlos por el logo de IMEDIAM con los mismos nombres y tamaños:
+Los de la carpeta `icons/` ya son los definitivos: el globo del logo de
+IMEDIAM sobre fondo blanco. Si algún día cambia el logo, hay que reemplazarlos
+con los mismos nombres y tamaños:
 
 - icon-192.png            192x192
 - icon-512.png            512x512
