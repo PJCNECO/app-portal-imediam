@@ -4,12 +4,14 @@ Con estos archivos, https://app.imediagnostico.com se puede instalar en el
 celular como una app: ícono en la pantalla de inicio y pantalla completa.
 No pasa por App Store ni Google Play.
 
-Al abrirla aparece una pantalla de inicio (`inicio.html`) con cuatro opciones:
+Al abrirla aparece una pantalla de inicio (`inicio.html`) con estas opciones:
 
 - **Ver estudios:** lleva al login del portal.
 - **Pedir un turno:** se elige el estudio y se abre WhatsApp con el mensaje armado.
 - **Hacer una consulta:** por WhatsApp o por mail.
-- **Servicios:** los estudios que hace IMEDIAM, con su descripción.
+- **Servicios:** los estudios que hace IMEDIAM, con su foto y su descripción.
+- **Compartir la app:** botón de compartir del celular, envío por WhatsApp,
+  copiar el enlace y un código QR.
 
 La pantalla de inicio es una sola página, sin base de datos ni formularios que
 guarden nada: los turnos y las consultas se mandan por WhatsApp
@@ -31,6 +33,8 @@ portal. Se vuelve a generar con `python3 armar-demo.py`.
 - `inicio.html`           ->  https://app.imediagnostico.com/inicio.html
 - `instalar-app.js`       ->  https://app.imediagnostico.com/instalar-app.js
 - carpeta `icons/`        ->  https://app.imediagnostico.com/icons/...
+- carpeta `img/`          ->  https://app.imediagnostico.com/img/...   (fotos de los estudios)
+- `qr-app.png`            ->  https://app.imediagnostico.com/qr-app.png  (código QR para compartir la app)
 
 `sw.js` tiene que quedar en la raíz (no en una subcarpeta) y servirse por HTTPS.
 El servidor tiene que entregar `manifest.webmanifest` como

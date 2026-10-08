@@ -13,12 +13,26 @@ PORTAL = "https://app.imediagnostico.com/login"
 os.makedirs("docs", exist_ok=True)
 shutil.rmtree("docs/icons", ignore_errors=True)
 shutil.copytree("icons", "docs/icons")
+shutil.rmtree("docs/img", ignore_errors=True)
+shutil.copytree("img", "docs/img")
 shutil.copy("sw.js", "docs/sw.js")
+
+# El código QR de la copia de prueba lleva a la dirección de GitHub Pages.
+DEMO = "https://pjcneco.github.io/app-portal-imediam/"
+try:
+    import qrcode
+    q = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_M, box_size=12, border=3)
+    q.add_data(DEMO); q.make(fit=True)
+    q.make_image(fill_color="black", back_color="white").save("docs/qr-app.png")
+except ImportError:
+    print("Falta el módulo qrcode (pip install qrcode): no se regeneró docs/qr-app.png")
 
 html = open("inicio.html", encoding="utf-8").read()
 html = (html.replace('href="/login"', 'href="%s"' % PORTAL)
             .replace('"/manifest.webmanifest"', '"manifest.webmanifest"')
             .replace('"/icons/', '"icons/')
+            .replace('"/img/', '"img/')
+            .replace('"/qr-app.png"', '"qr-app.png"')
             .replace("'/sw.js'", "'sw.js'")
             .replace('"/instalar-app.js"', '"instalar-app.js"'))
 assert '="/' not in html and "'/" not in html, "quedó alguna ruta absoluta"

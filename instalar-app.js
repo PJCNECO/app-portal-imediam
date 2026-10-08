@@ -40,7 +40,7 @@
     if (boton) {
       var b = document.createElement('button');
       b.type = 'button'; b.textContent = 'Instalar';
-      b.style.cssText = 'margin-top:10px;border:0;border-radius:8px;padding:9px 18px;background:#0061af;color:#fff;font:600 15px/1 inherit;cursor:pointer';
+      b.style.cssText = 'margin-top:10px;border:0;border-radius:8px;padding:9px 18px;background:#0061af;color:#fff;font-family:inherit;font-weight:600;font-size:15px;line-height:1;cursor:pointer';
       b.onclick = boton;
       cuerpo.appendChild(b);
     }

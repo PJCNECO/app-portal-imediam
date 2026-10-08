@@ -45,7 +45,14 @@ h2{font-size:20px;margin:30px 0 4px}
 .tit small{display:block;color:var(--tinta-2);font-size:13.5px}
 .cuerpo{padding:0 14px 14px;font-size:15px}
 .cuerpo p{margin:0 0 8px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:0;border-radius:10px;padding:13px 18px;font:600 16px/1.2 inherit;cursor:pointer;min-height:48px}
+.foto{display:block;width:100%;max-width:420px;height:auto;aspect-ratio:1;border-radius:10px;margin:0 auto 12px;background:var(--celeste)}
+.compartir{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:16px;text-align:center}
+.compartir p{margin:0 0 12px;color:var(--tinta-2);font-size:14.5px}
+.compartir img{display:block;width:180px;height:180px;margin:14px auto 6px}
+.compartir small{color:var(--tinta-2)}
+.btn.azul{background:var(--azul);color:#fff}
+.aviso-copia{min-height:1.4em;font-size:14px;color:var(--wa);font-weight:600;margin-top:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:0;border-radius:10px;padding:13px 18px;font-family:inherit;font-weight:600;font-size:16px;line-height:1.2;cursor:pointer;min-height:48px}
 .btn.wa{background:var(--wa);color:#fff}
 .btn.borde{background:#fff;color:var(--tinta);border:1px solid #b9cbd6}
 .btn.chico{font-size:15px;padding:10px 14px;min-height:44px;margin-top:4px}
@@ -87,6 +94,10 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
       <svg viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
       <span><strong>Servicios</strong><small>Los estudios que hacemos</small></span><span class="flecha" aria-hidden="true">›</span>
     </a>
+    <a class="accion" href="#compartir">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg>
+      <span><strong>Compartir la app</strong><small>Enviársela a otra persona</small></span><span class="flecha" aria-hidden="true">›</span>
+    </a>
   </div>
 
   <section class="panel" id="turno" hidden aria-labelledby="t-turno">
@@ -109,6 +120,7 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
     <details class="serv">
       <summary><span class="sigla">RMN</span><span class="tit"><strong>Resonancia magnética</strong><small>Órganos y tejidos blandos</small></span></summary>
       <div class="cuerpo">
+        <img class="foto" src="img/rmn.jpg" alt="Paciente en el resonador abierto, acompañada por una técnica" width="800" height="800" loading="lazy" decoding="async">
         <p><b>En qué consiste.</b> Técnica de alta resolución que usa campos magnéticos y ondas de radio, sin radiación, para obtener imágenes detalladas del interior del cuerpo. Contamos con un resonador abierto para mayor comodidad.</p>
         <p><b>Para qué sirve.</b> Excelente para examinar el cerebro, la columna vertebral, articulaciones, ligamentos, tendones y órganos abdominales.</p>
         <p><b>Qué esperar.</b> El paciente se recuesta dentro del resonador. Es indispensable retirar todos los objetos metálicos antes de ingresar.</p>
@@ -118,6 +130,7 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
     <details class="serv">
       <summary><span class="sigla">CT</span><span class="tit"><strong>Tomografía computada</strong><small>Estructuras internas en 3D</small></span></summary>
       <div class="cuerpo">
+        <img class="foto" src="img/ct.jpg" alt="Técnica preparando a un paciente en el tomógrafo" width="800" height="800" loading="lazy" decoding="async">
         <p><b>En qué consiste.</b> Combina rayos X con procesamiento computarizado de alta velocidad para obtener imágenes en cortes transversales o tridimensionales.</p>
         <p><b>Para qué sirve.</b> Permite examinar minuciosamente huesos, pulmones, vasos sanguíneos y órganos abdominales.</p>
         <p><b>Qué esperar.</b> El paciente se recuesta en una camilla que se desplaza suavemente a través del tomógrafo. En ciertos casos puede requerir medio de contraste.</p>
@@ -127,6 +140,7 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
     <details class="serv">
       <summary><span class="sigla">CT</span><span class="tit"><strong>Score de calcio</strong><small>Corazón y arterias coronarias</small></span></summary>
       <div class="cuerpo">
+        <img class="foto" src="img/ct-score-de-calcio.jpg" alt="Consola del tomógrafo durante un score de calcio" width="800" height="800" loading="lazy" decoding="async">
         <p><b>En qué consiste.</b> Tomografía especializada de baja dosis de radiación que mide la cantidad de calcio acumulado en las arterias coronarias.</p>
         <p><b>Para qué sirve.</b> Permite calcular el riesgo de sufrir un infarto o enfermedad cardiovascular antes de que aparezcan síntomas.</p>
         <p><b>Qué esperar.</b> Es no invasivo, indoloro y muy rápido: dura pocos minutos. No requiere contraste intravenoso.</p>
@@ -136,6 +150,7 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
     <details class="serv">
       <summary><span class="sigla">MG</span><span class="tit"><strong>Mamografía 3D (tomosíntesis)</strong><small>Salud mamaria</small></span></summary>
       <div class="cuerpo">
+        <img class="foto" src="img/mg-3d.jpg" alt="Paciente frente al mamógrafo 3D" width="800" height="800" loading="lazy" decoding="async">
         <p><b>En qué consiste.</b> Mamografía avanzada que toma múltiples cortes milimétricos del tejido mamario para crear una reconstrucción tridimensional, con un equipo de última generación.</p>
         <p><b>Para qué sirve.</b> Permite ver a través del tejido denso de la mama y detectar pequeñas lesiones de forma muy temprana.</p>
         <p><b>Qué esperar.</b> El procedimiento es similar al de una mamografía convencional, y reduce la necesidad de estudios complementarios por falsos hallazgos.</p>
@@ -145,6 +160,7 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
     <details class="serv">
       <summary><span class="sigla">US</span><span class="tit"><strong>Ecografía general</strong><small>Órganos abdominales y partes blandas</small></span></summary>
       <div class="cuerpo">
+        <img class="foto" src="img/us.jpg" alt="Ecógrafo mostrando una imagen en pantalla" width="800" height="800" loading="lazy" decoding="async">
         <p><b>En qué consiste.</b> Examen no invasivo que emplea ondas de sonido de alta frecuencia para observar estructuras internas.</p>
         <p><b>Para qué sirve.</b> Evaluaciones de abdomen (hígado, vesícula, riñones), pelvis, tiroides, mama, partes blandas y control prenatal.</p>
         <p><b>Qué esperar.</b> Totalmente inocua, no utiliza radiación. Según la zona, puede pedirse ayuno o vejiga llena.</p>
@@ -154,6 +170,7 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
     <details class="serv">
       <summary><span class="sigla">US</span><span class="tit"><strong>Ecografía Doppler</strong><small>Flujo sanguíneo</small></span></summary>
       <div class="cuerpo">
+        <img class="foto" src="img/us-doppler.jpg" alt="Médico haciendo una ecografía Doppler" width="800" height="800" loading="lazy" decoding="async">
         <p><b>En qué consiste.</b> Ecografía que evalúa el movimiento y la velocidad de la sangre en arterias y venas mediante ultrasonido.</p>
         <p><b>Para qué sirve.</b> Permite identificar trombosis, várices, estrechamiento de arterias e insuficiencia venosa.</p>
         <p><b>Qué esperar.</b> Se aplica un gel tibio sobre la piel y se pasa el transductor. Es seguro y no produce dolor.</p>
@@ -163,6 +180,7 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
     <details class="serv">
       <summary><span class="sigla">US</span><span class="tit"><strong>Ecografía 4D y 5D</strong><small>Control prenatal</small></span></summary>
       <div class="cuerpo">
+        <img class="foto" src="img/us-4-y-5d.jpg" alt="Ecógrafo mostrando la imagen de un bebé en 4D" width="800" height="800" loading="lazy" decoding="async">
         <p><b>En qué consiste.</b> Ecografía obstétrica de alta definición que agrega volumen y movimiento en tiempo real.</p>
         <p><b>Para qué sirve.</b> Permite observar con nitidez los rasgos, gestos y extremidades del bebé, y complementa el control de su desarrollo.</p>
         <p><b>Qué esperar.</b> Una experiencia cómoda para la familia, completamente segura para la mamá y el bebé.</p>
@@ -172,6 +190,7 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
     <details class="serv">
       <summary><span class="sigla">RX</span><span class="tit"><strong>Radiografía</strong><small>Estructura ósea y tórax</small></span></summary>
       <div class="cuerpo">
+        <img class="foto" src="img/rx.jpg" alt="Técnica ubicando el equipo de rayos X sobre un paciente" width="800" height="800" loading="lazy" decoding="async">
         <p><b>En qué consiste.</b> Estudio básico de imagen con una cantidad mínima de radiación, realizado con un equipo digital directo de última generación.</p>
         <p><b>Para qué sirve.</b> Indicada para detectar fracturas, luxaciones y problemas articulares, y para evaluar el tórax.</p>
         <p><b>Qué esperar.</b> Es el estudio de imagen más rápido y accesible.</p>
@@ -181,6 +200,7 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
     <details class="serv">
       <summary><span class="sigla">RX</span><span class="tit"><strong>Espinograma</strong><small>Columna vertebral completa</small></span></summary>
       <div class="cuerpo">
+        <img class="foto" src="img/rx-espinograma.jpg" alt="Pantalla del equipo digital con una radiografía de columna completa" width="800" height="800" loading="lazy" decoding="async">
         <p><b>En qué consiste.</b> Radiografía panorámica de toda la columna, desde la región cervical hasta la pelvis, en una sola toma, con equipo digital directo.</p>
         <p><b>Para qué sirve.</b> Evalúa la alineación de la espalda e identifica desviaciones como escoliosis o diferencias en la altura de las caderas.</p>
         <p><b>Qué esperar.</b> Se realiza de pie frente al equipo. Es rápido e indoloro.</p>
@@ -190,6 +210,7 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
     <details class="serv">
       <summary><span class="sigla">RX</span><span class="tit"><strong>Telemetría de miembros inferiores</strong><small>Longitud de las piernas</small></span></summary>
       <div class="cuerpo">
+        <img class="foto" src="img/rx-telemetria-mmii.jpg" alt="Paciente de pie frente al equipo de rayos X" width="800" height="800" loading="lazy" decoding="async">
         <p><b>En qué consiste.</b> Radiografía de longitud completa, desde las caderas hasta los tobillos, de pie, con equipo digital directo.</p>
         <p><b>Para qué sirve.</b> Mide con exactitud la longitud de las piernas para detectar diferencias entre ambas o desviaciones en las rodillas.</p>
         <p><b>Qué esperar.</b> Examen rápido e indoloro que se hace de pie.</p>
@@ -199,6 +220,7 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
     <details class="serv">
       <summary><span class="sigla">BMD</span><span class="tit"><strong>Densitometría ósea</strong><small>Huesos</small></span></summary>
       <div class="cuerpo">
+        <img class="foto" src="img/bmd-oseo.jpg" alt="Paciente recostada en el densitómetro" width="800" height="800" loading="lazy" decoding="async">
         <p><b>En qué consiste.</b> Mide la densidad y la salud mineral de los huesos mediante una dosis baja de rayos X.</p>
         <p><b>Para qué sirve.</b> Diagnostica osteopenia y osteoporosis, y evalúa el riesgo de fracturas a futuro.</p>
         <p><b>Qué esperar.</b> El paciente se recuesta en la camilla mientras el equipo recorre la zona, por lo general cadera y columna. Es indoloro y toma entre 10 y 15 minutos.</p>
@@ -208,6 +230,7 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
     <details class="serv">
       <summary><span class="sigla">BMD</span><span class="tit"><strong>Composición corporal</strong><small>Masa grasa, músculo y hueso</small></span></summary>
       <div class="cuerpo">
+        <img class="foto" src="img/bmd-composicion.jpg" alt="Paciente recostada en el densitómetro para un estudio de composición corporal" width="800" height="800" loading="lazy" decoding="async">
         <p><b>En qué consiste.</b> Análisis que usa la tecnología de densitometría para medir con precisión la masa grasa, la masa magra y la densidad ósea de todo el cuerpo.</p>
         <p><b>Para qué sirve.</b> Ideal para seguimiento nutricional, deportistas y programas de descenso de peso o ganancia muscular.</p>
         <p><b>Qué esperar.</b> Examen rápido, indoloro y sin preparaciones complejas.</p>
@@ -217,6 +240,7 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
     <details class="serv">
       <summary><span class="sigla">ECG</span><span class="tit"><strong>Electrocardiograma</strong><small>Función eléctrica del corazón</small></span></summary>
       <div class="cuerpo">
+        <img class="foto" src="img/ecg.jpg" alt="Tira de electrocardiograma con un paciente al fondo" width="800" height="800" loading="lazy" decoding="async">
         <p><b>En qué consiste.</b> Prueba simple que registra la actividad eléctrica del corazón mediante pequeños parches adhesivos.</p>
         <p><b>Para qué sirve.</b> Detecta alteraciones del ritmo cardíaco, signos de falta de riego sanguíneo o lesiones previas del músculo cardíaco.</p>
         <p><b>Qué esperar.</b> El paciente permanece recostado unos minutos mientras el equipo registra los latidos. No causa molestias.</p>
@@ -231,6 +255,19 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
     <a href="tel:+542262654706"><span><b>Teléfono</b><small>2262 65-4706</small></span></a>
     <a href="mailto:turnos@imediagnostico.com"><span><b>Mail</b><small>turnos@imediagnostico.com</small></span></a>
     <a href="https://www.google.com/maps/search/?api=1&query=IMEDIAM+Calle+67+2737+Necochea" target="_blank" rel="noopener"><span><b>Dirección</b><small>Calle 67 N.º 2737, Necochea</small></span></a>
+  </div>
+
+  <h2 id="compartir">Compartir la app</h2>
+  <div class="compartir">
+    <p>Pasale la app de IMEDIAM a un familiar, un paciente o un colega.</p>
+    <div class="fila" style="margin-top:0">
+      <button class="btn azul" type="button" id="cp-compartir">Compartir</button>
+      <a class="btn wa" id="cp-wa">Enviar por WhatsApp</a>
+      <button class="btn borde" type="button" id="cp-copiar">Copiar enlace</button>
+    </div>
+    <div class="aviso-copia" id="cp-aviso" role="status"></div>
+    <img src="qr-app.png" alt="Código QR con el enlace a la app de IMEDIAM" width="180" height="180" loading="lazy">
+    <small>O mostrá este código para que lo escaneen con la cámara.</small>
   </div>
 </main>
 <footer>IMEDIAM · Medicina | Diagnóstico | Educación | Mutualismo</footer>
@@ -267,6 +304,18 @@ footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28
   }
   texto.addEventListener('input', armarConsulta); armarConsulta();
   coEnviar.target = '_blank'; coEnviar.rel = 'noopener';
+  // Compartir la app
+  var enlace = location.origin + location.pathname;
+  var mensaje = 'Te comparto la app de IMEDIAM para ver tus estudios, pedir turno y conocer los servicios:';
+  var btnCompartir = document.getElementById('cp-compartir'), cpWa = document.getElementById('cp-wa'), aviso = document.getElementById('cp-aviso');
+  cpWa.href = 'https://wa.me/?text=' + encodeURIComponent(mensaje + ' ' + enlace); cpWa.target = '_blank'; cpWa.rel = 'noopener';
+  if (navigator.share) btnCompartir.addEventListener('click', function () { navigator.share({ title: 'IMEDIAM', text: mensaje, url: enlace }).catch(function () {}); });
+  else btnCompartir.hidden = true;   // en PC sin menú de compartir quedan WhatsApp y copiar
+  document.getElementById('cp-copiar').addEventListener('click', function () {
+    var listo = function () { aviso.textContent = 'Enlace copiado.'; setTimeout(function () { aviso.textContent = ''; }, 3000); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(enlace).then(listo, function () { prompt('Copiá el enlace:', enlace); });
+    else prompt('Copiá el enlace:', enlace);
+  });
   if ('serviceWorker' in navigator) window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
 })();
 </script>
