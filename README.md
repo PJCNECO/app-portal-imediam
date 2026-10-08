@@ -15,6 +15,13 @@ La pantalla de inicio es una sola página, sin base de datos ni formularios que
 guarden nada: los turnos y las consultas se mandan por WhatsApp
 (2262 22-1071), teléfono (2262 65-4706) o mail (turnos@imediagnostico.com).
 
+## Copia de prueba (carpeta `docs/`)
+
+La carpeta `docs/` es una copia de la app para probarla en el celular antes de
+instalarla en el portal, publicada con GitHub Pages. Es igual a la definitiva,
+salvo que "Ver estudios" abre el portal en el navegador. No hay que subirla al
+portal. Se vuelve a generar con `python3 armar-demo.py`.
+
 ## Para quien administra el portal
 
 ### 1. Subir archivos a la raíz de app.imediagnostico.com
