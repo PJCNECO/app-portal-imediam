@@ -1,6 +1,9 @@
 // Cartel "Instalar la app de IMEDIAM" para la pagina de login.
 // - Android / Chrome / Edge: muestra un boton que abre la instalacion del navegador.
 // - iPhone / iPad (Safari): muestra los dos pasos, porque Apple no permite instalar con un boton.
+// - Samsung Internet: su instalacion la bloquea Google Play Protect ("Se bloqueo la app no
+//   segura"), porque ese navegador arma la app para una version vieja de Android. Se ofrece
+//   abrir la pagina en Chrome, o agregarla a la pantalla de inicio como acceso directo.
 // - No aparece si la app ya esta instalada, ni por 30 dias si la persona lo cierra.
 (function () {
   var CLAVE = 'imediam-instalar-cerrado';
@@ -14,9 +17,10 @@
   var ua = navigator.userAgent;
   var esIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   var esSafari = /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS/.test(ua);
+  var esSamsung = /SamsungBrowser/i.test(ua);
   var pedido = null;
 
-  function mostrar(texto, boton) {
+  function mostrar(texto, boton, rotulo, extra) {
     if (document.getElementById('imediam-instalar')) return;
     var caja = document.createElement('div');
     caja.id = 'imediam-instalar';
@@ -39,7 +43,7 @@
     cuerpo.appendChild(titulo); cuerpo.appendChild(detalle);
     if (boton) {
       var b = document.createElement('button');
-      b.type = 'button'; b.textContent = 'Instalar';
+      b.type = 'button'; b.textContent = rotulo || 'Instalar';
       b.style.cssText = 'margin-top:10px;border:0;border-radius:8px;padding:9px 18px;background:#0061af;color:#fff;font-family:inherit;font-weight:600;font-size:15px;line-height:1;cursor:pointer';
       b.onclick = boton;
       cuerpo.appendChild(b);
@@ -48,6 +52,12 @@
     cerrar.type = 'button'; cerrar.textContent = '\u00d7'; cerrar.setAttribute('aria-label', 'Cerrar');
     cerrar.style.cssText = 'border:0;background:none;font-size:24px;line-height:1;color:#4e626e;cursor:pointer;padding:0 4px;flex:none';
     cerrar.onclick = function () { try { localStorage.setItem(CLAVE, Date.now()); } catch (e) {} caja.remove(); };
+    if (extra) {
+      var e = document.createElement('div');
+      e.textContent = extra;
+      e.style.cssText = 'color:#4e626e;font-size:13px;margin-top:10px';
+      cuerpo.appendChild(e);
+    }
     caja.appendChild(icono); caja.appendChild(cuerpo); caja.appendChild(cerrar);
     document.body.appendChild(caja);
   }
@@ -55,6 +65,7 @@
   // Android, Chrome y Edge avisan cuando la pagina se puede instalar.
   window.addEventListener('beforeinstallprompt', function (ev) {
     ev.preventDefault();
+    if (esSamsung) return;   // en Samsung Internet esa instalacion la bloquea Play Protect
     pedido = ev;
     mostrar('Queda en tu pantalla de inicio y abre el portal a pantalla completa.', function () {
       pedido.prompt();
@@ -62,6 +73,18 @@
     });
   });
   window.addEventListener('appinstalled', function () { var c = document.getElementById('imediam-instalar'); if (c) c.remove(); });
+
+  // Samsung Internet: abrir la misma pagina en Chrome, que instala sin el bloqueo.
+  if (esSamsung && !esIOS) {
+    window.addEventListener('load', function () {
+      var dir = location.host + location.pathname + location.search;
+      var tienda = 'https://play.google.com/store/apps/details?id=com.android.chrome';
+      var enChrome = 'intent://' + dir + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + encodeURIComponent(tienda) + ';end';
+      mostrar('Desde este navegador Android puede bloquear la instalaci\u00f3n. Abrila en Chrome para instalarla sin problemas.',
+        function () { location.href = enChrome; }, 'Abrir en Chrome',
+        'Si prefer\u00eds quedarte en este navegador: toc\u00e1 el men\u00fa (las tres rayas), "Agregar p\u00e1gina a" y eleg\u00ed "Pantalla de inicio".');
+    });
+  }
 
   // En iPhone no hay aviso: se explican los pasos.
   if (esIOS) {

@@ -50,6 +50,13 @@ cartel "Instalá la app de IMEDIAM". En Android abre la instalación con un
 botón; en iPhone explica los dos pasos. No aparece si la app ya está
 instalada, y si la persona lo cierra no vuelve a salir por 30 días.
 
+En Samsung Internet, el navegador de los celulares Samsung, Google Play
+Protect bloquea la instalación ("Se bloqueó la app no segura"), porque ese
+navegador arma la app para una versión vieja de Android. No depende de la
+app. Por eso, en Samsung Internet el cartel ofrece "Abrir en Chrome", que
+abre la misma página en Chrome para instalarla, y explica cómo agregarla a la
+pantalla de inicio como acceso directo sin salir de Samsung Internet.
+
 ### Si se prefiere que la app abra directo en el login
 
 En `manifest.webmanifest`, cambiar `"start_url": "/inicio.html"` por
