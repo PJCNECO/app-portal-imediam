@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IMEDIAM</title>
+<meta name="description" content="IMEDIAM, diagnóstico por imágenes en Necochea: ver estudios, pedir turno, consultas y servicios.">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0061af">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IMEDIAM">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="icon" href="/icons/icon-192.png">
+<style>
+:root{--azul:#0061af;--verde:#00979d;--celeste:#e6f3fa;--tinta:#12303f;--tinta-2:#51697a;--linea:#d5e2ea;--fondo:#f4f8fb;--wa:#128c4a}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--tinta);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:env(safe-area-inset-bottom)}
+a{color:inherit}
+:focus-visible{outline:3px solid #7fc4ea;outline-offset:2px}
+header{background:#fff;border-bottom:1px solid var(--linea);padding:calc(18px + env(safe-area-inset-top)) 20px 18px;display:flex;align-items:center;gap:14px}
+header img{width:56px;height:56px;flex:none}
+header h1{margin:0;font-size:26px;line-height:1.1;letter-spacing:.2px}
+header h1 span{color:var(--verde)} header h1 b{color:var(--azul)}
+header p{margin:2px 0 0;color:var(--tinta-2);font-size:13.5px}
+main{max-width:640px;margin:0 auto;padding:18px 16px 32px}
+.acciones{display:grid;gap:12px}
+.accion{display:flex;align-items:center;gap:14px;text-decoration:none;background:#fff;border:1px solid var(--linea);border-radius:14px;padding:16px;min-height:76px;cursor:pointer;font:inherit;text-align:left;width:100%;color:inherit}
+.accion.principal{background:var(--azul);border-color:var(--azul);color:#fff}
+.accion svg{flex:none;width:30px;height:30px}
+.accion strong{display:block;font-size:18px;line-height:1.25}
+.accion small{display:block;font-size:14px;opacity:.85}
+.accion .flecha{margin-left:auto;font-size:22px;opacity:.6}
+h2{font-size:20px;margin:30px 0 4px}
+.bajada{margin:0 0 14px;color:var(--tinta-2);font-size:14.5px}
+.serv{background:#fff;border:1px solid var(--linea);border-radius:12px;margin-bottom:8px}
+.serv summary{list-style:none;display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;min-height:60px}
+.serv summary::-webkit-details-marker{display:none}
+.serv summary::after{content:"+";margin-left:auto;font-size:24px;line-height:1;color:var(--tinta-2);flex:none}
+.serv[open] summary::after{content:"–"}
+.sigla{flex:none;width:48px;text-align:center;font-weight:700;font-size:13px;color:var(--azul);background:var(--celeste);border-radius:8px;padding:7px 0}
+.tit strong{display:block;line-height:1.25}
+.tit small{display:block;color:var(--tinta-2);font-size:13.5px}
+.cuerpo{padding:0 14px 14px;font-size:15px}
+.cuerpo p{margin:0 0 8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:0;border-radius:10px;padding:13px 18px;font:600 16px/1.2 inherit;cursor:pointer;min-height:48px}
+.btn.wa{background:var(--wa);color:#fff}
+.btn.borde{background:#fff;color:var(--tinta);border:1px solid #b9cbd6}
+.btn.chico{font-size:15px;padding:10px 14px;min-height:44px;margin-top:4px}
+.panel{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:16px;margin-top:12px}
+.panel[hidden]{display:none}
+.panel h3{margin:0 0 4px;font-size:18px}
+label{display:block;font-size:14px;color:var(--tinta-2);margin-top:12px}
+select,input,textarea{display:block;width:100%;margin-top:6px;padding:12px;font:inherit;border:1px solid #b9cbd6;border-radius:10px;background:#fff;color:var(--tinta)}
+textarea{min-height:96px;resize:vertical}
+.fila{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.fila .btn{flex:1;min-width:150px}
+.datos{display:grid;gap:10px;margin-top:6px}
+.datos a,.datos div{display:flex;gap:12px;align-items:flex-start;text-decoration:none;background:#fff;border:1px solid var(--linea);border-radius:12px;padding:12px 14px}
+.datos b{display:block} .datos small{color:var(--tinta-2);font-size:14px}
+footer{text-align:center;color:var(--tinta-2);font-size:13px;padding:8px 16px 28px}
+</style>
+</head>
+<body>
+<header>
+  <img src="/icons/icon-192.png" alt="">
+  <div><h1><span>iMEDi</span><b>AM</b></h1><p>Diagnóstico por imágenes · Necochea</p></div>
+</header>
+
+<main>
+  <div class="acciones">
+    <a class="accion principal" href="/login">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 15l3-4 3 3 2-2 2 3"/></svg>
+      <span><strong>Ver estudios</strong><small>Entrar al portal con tu usuario y clave</small></span><span class="flecha" aria-hidden="true">›</span>
+    </a>
+    <button class="accion" type="button" data-abre="turno">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+      <span><strong>Pedir un turno</strong><small>Te respondemos por WhatsApp</small></span><span class="flecha" aria-hidden="true">›</span>
+    </button>
+    <button class="accion" type="button" data-abre="consulta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+      <span><strong>Hacer una consulta</strong><small>Preparación de un estudio, coberturas, resultados</small></span><span class="flecha" aria-hidden="true">›</span>
+    </button>
+    <a class="accion" href="#servicios">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+      <span><strong>Servicios</strong><small>Los estudios que hacemos</small></span><span class="flecha" aria-hidden="true">›</span>
+    </a>
+  </div>
+
+  <section class="panel" id="turno" hidden aria-labelledby="t-turno">
+    <h3 id="t-turno">Pedir un turno</h3>
+    <p class="bajada" style="margin:0">Elegí el estudio y se abre WhatsApp con el mensaje armado. El turno queda confirmado cuando te responde la secretaría.</p>
+    <label>Estudio<select id="tu-estudio"><option value="">Elegí un estudio</option><option>Resonancia magnética</option><option>Tomografía computada</option><option>Score de calcio</option><option>Mamografía 3D (tomosíntesis)</option><option>Ecografía general</option><option>Ecografía Doppler</option><option>Ecografía 4D y 5D</option><option>Radiografía</option><option>Espinograma</option><option>Telemetría de miembros inferiores</option><option>Densitometría ósea</option><option>Composición corporal</option><option>Electrocardiograma</option><option>Otro estudio</option></select></label>
+    <label>Cobertura (obra social o particular), si querés indicarla<input id="tu-cobertura" type="text" autocomplete="off"></label>
+    <div class="fila"><a class="btn wa" id="tu-enviar">Seguir en WhatsApp</a><a class="btn borde" href="tel:+542262654706">Llamar al 2262 65-4706</a></div>
+  </section>
+
+  <section class="panel" id="consulta" hidden aria-labelledby="t-consulta">
+    <h3 id="t-consulta">Hacer una consulta</h3>
+    <label>Tu consulta<textarea id="co-texto" placeholder="Por ejemplo: ¿qué preparación necesito para una ecografía abdominal?"></textarea></label>
+    <div class="fila"><a class="btn wa" id="co-enviar">Enviar por WhatsApp</a><a class="btn borde" id="co-mail">Enviar por mail</a></div>
+  </section>
+
+  <h2 id="servicios">Servicios</h2>
+  <p class="bajada">Tocá un estudio para ver en qué consiste y pedir turno.</p>
+  
+    <details class="serv">
+      <summary><span class="sigla">RMN</span><span class="tit"><strong>Resonancia magnética</strong><small>Órganos y tejidos blandos</small></span></summary>
+      <div class="cuerpo">
+        <p><b>En qué consiste.</b> Técnica de alta resolución que usa campos magnéticos y ondas de radio, sin radiación, para obtener imágenes detalladas del interior del cuerpo. Contamos con un resonador abierto para mayor comodidad.</p>
+        <p><b>Para qué sirve.</b> Excelente para examinar el cerebro, la columna vertebral, articulaciones, ligamentos, tendones y órganos abdominales.</p>
+        <p><b>Qué esperar.</b> El paciente se recuesta dentro del resonador. Es indispensable retirar todos los objetos metálicos antes de ingresar.</p>
+        <a class="btn wa chico" data-wa="Hola, quiero pedir un turno para resonancia magnética.">Pedir turno para este estudio</a>
+      </div>
+    </details>
+    <details class="serv">
+      <summary><span class="sigla">CT</span><span class="tit"><strong>Tomografía computada</strong><small>Estructuras internas en 3D</small></span></summary>
+      <div class="cuerpo">
+        <p><b>En qué consiste.</b> Combina rayos X con procesamiento computarizado de alta velocidad para obtener imágenes en cortes transversales o tridimensionales.</p>
+        <p><b>Para qué sirve.</b> Permite examinar minuciosamente huesos, pulmones, vasos sanguíneos y órganos abdominales.</p>
+        <p><b>Qué esperar.</b> El paciente se recuesta en una camilla que se desplaza suavemente a través del tomógrafo. En ciertos casos puede requerir medio de contraste.</p>
+        <a class="btn wa chico" data-wa="Hola, quiero pedir un turno para tomografía computada.">Pedir turno para este estudio</a>
+      </div>
+    </details>
+    <details class="serv">
+      <summary><span class="sigla">CT</span><span class="tit"><strong>Score de calcio</strong><small>Corazón y arterias coronarias</small></span></summary>
+      <div class="cuerpo">
+        <p><b>En qué consiste.</b> Tomografía especializada de baja dosis de radiación que mide la cantidad de calcio acumulado en las arterias coronarias.</p>
+        <p><b>Para qué sirve.</b> Permite calcular el riesgo de sufrir un infarto o enfermedad cardiovascular antes de que aparezcan síntomas.</p>
+        <p><b>Qué esperar.</b> Es no invasivo, indoloro y muy rápido: dura pocos minutos. No requiere contraste intravenoso.</p>
+        <a class="btn wa chico" data-wa="Hola, quiero pedir un turno para score de calcio.">Pedir turno para este estudio</a>
+      </div>
+    </details>
+    <details class="serv">
+      <summary><span class="sigla">MG</span><span class="tit"><strong>Mamografía 3D (tomosíntesis)</strong><small>Salud mamaria</small></span></summary>
+      <div class="cuerpo">
+        <p><b>En qué consiste.</b> Mamografía avanzada que toma múltiples cortes milimétricos del tejido mamario para crear una reconstrucción tridimensional, con un equipo de última generación.</p>
+        <p><b>Para qué sirve.</b> Permite ver a través del tejido denso de la mama y detectar pequeñas lesiones de forma muy temprana.</p>
+        <p><b>Qué esperar.</b> El procedimiento es similar al de una mamografía convencional, y reduce la necesidad de estudios complementarios por falsos hallazgos.</p>
+        <a class="btn wa chico" data-wa="Hola, quiero pedir un turno para mamografía 3D (tomosíntesis).">Pedir turno para este estudio</a>
+      </div>
+    </details>
+    <details class="serv">
+      <summary><span class="sigla">US</span><span class="tit"><strong>Ecografía general</strong><small>Órganos abdominales y partes blandas</small></span></summary>
+      <div class="cuerpo">
+        <p><b>En qué consiste.</b> Examen no invasivo que emplea ondas de sonido de alta frecuencia para observar estructuras internas.</p>
+        <p><b>Para qué sirve.</b> Evaluaciones de abdomen (hígado, vesícula, riñones), pelvis, tiroides, mama, partes blandas y control prenatal.</p>
+        <p><b>Qué esperar.</b> Totalmente inocua, no utiliza radiación. Según la zona, puede pedirse ayuno o vejiga llena.</p>
+        <a class="btn wa chico" data-wa="Hola, quiero pedir un turno para ecografía general.">Pedir turno para este estudio</a>
+      </div>
+    </details>
+    <details class="serv">
+      <summary><span class="sigla">US</span><span class="tit"><strong>Ecografía Doppler</strong><small>Flujo sanguíneo</small></span></summary>
+      <div class="cuerpo">
+        <p><b>En qué consiste.</b> Ecografía que evalúa el movimiento y la velocidad de la sangre en arterias y venas mediante ultrasonido.</p>
+        <p><b>Para qué sirve.</b> Permite identificar trombosis, várices, estrechamiento de arterias e insuficiencia venosa.</p>
+        <p><b>Qué esperar.</b> Se aplica un gel tibio sobre la piel y se pasa el transductor. Es seguro y no produce dolor.</p>
+        <a class="btn wa chico" data-wa="Hola, quiero pedir un turno para ecografía Doppler.">Pedir turno para este estudio</a>
+      </div>
+    </details>
+    <details class="serv">
+      <summary><span class="sigla">US</span><span class="tit"><strong>Ecografía 4D y 5D</strong><small>Control prenatal</small></span></summary>
+      <div class="cuerpo">
+        <p><b>En qué consiste.</b> Ecografía obstétrica de alta definición que agrega volumen y movimiento en tiempo real.</p>
+        <p><b>Para qué sirve.</b> Permite observar con nitidez los rasgos, gestos y extremidades del bebé, y complementa el control de su desarrollo.</p>
+        <p><b>Qué esperar.</b> Una experiencia cómoda para la familia, completamente segura para la mamá y el bebé.</p>
+        <a class="btn wa chico" data-wa="Hola, quiero pedir un turno para ecografía 4D y 5D.">Pedir turno para este estudio</a>
+      </div>
+    </details>
+    <details class="serv">
+      <summary><span class="sigla">RX</span><span class="tit"><strong>Radiografía</strong><small>Estructura ósea y tórax</small></span></summary>
+      <div class="cuerpo">
+        <p><b>En qué consiste.</b> Estudio básico de imagen con una cantidad mínima de radiación, realizado con un equipo digital directo de última generación.</p>
+        <p><b>Para qué sirve.</b> Indicada para detectar fracturas, luxaciones y problemas articulares, y para evaluar el tórax.</p>
+        <p><b>Qué esperar.</b> Es el estudio de imagen más rápido y accesible.</p>
+        <a class="btn wa chico" data-wa="Hola, quiero pedir un turno para radiografía.">Pedir turno para este estudio</a>
+      </div>
+    </details>
+    <details class="serv">
+      <summary><span class="sigla">RX</span><span class="tit"><strong>Espinograma</strong><small>Columna vertebral completa</small></span></summary>
+      <div class="cuerpo">
+        <p><b>En qué consiste.</b> Radiografía panorámica de toda la columna, desde la región cervical hasta la pelvis, en una sola toma, con equipo digital directo.</p>
+        <p><b>Para qué sirve.</b> Evalúa la alineación de la espalda e identifica desviaciones como escoliosis o diferencias en la altura de las caderas.</p>
+        <p><b>Qué esperar.</b> Se realiza de pie frente al equipo. Es rápido e indoloro.</p>
+        <a class="btn wa chico" data-wa="Hola, quiero pedir un turno para espinograma.">Pedir turno para este estudio</a>
+      </div>
+    </details>
+    <details class="serv">
+      <summary><span class="sigla">RX</span><span class="tit"><strong>Telemetría de miembros inferiores</strong><small>Longitud de las piernas</small></span></summary>
+      <div class="cuerpo">
+        <p><b>En qué consiste.</b> Radiografía de longitud completa, desde las caderas hasta los tobillos, de pie, con equipo digital directo.</p>
+        <p><b>Para qué sirve.</b> Mide con exactitud la longitud de las piernas para detectar diferencias entre ambas o desviaciones en las rodillas.</p>
+        <p><b>Qué esperar.</b> Examen rápido e indoloro que se hace de pie.</p>
+        <a class="btn wa chico" data-wa="Hola, quiero pedir un turno para telemetría de miembros inferiores.">Pedir turno para este estudio</a>
+      </div>
+    </details>
+    <details class="serv">
+      <summary><span class="sigla">BMD</span><span class="tit"><strong>Densitometría ósea</strong><small>Huesos</small></span></summary>
+      <div class="cuerpo">
+        <p><b>En qué consiste.</b> Mide la densidad y la salud mineral de los huesos mediante una dosis baja de rayos X.</p>
+        <p><b>Para qué sirve.</b> Diagnostica osteopenia y osteoporosis, y evalúa el riesgo de fracturas a futuro.</p>
+        <p><b>Qué esperar.</b> El paciente se recuesta en la camilla mientras el equipo recorre la zona, por lo general cadera y columna. Es indoloro y toma entre 10 y 15 minutos.</p>
+        <a class="btn wa chico" data-wa="Hola, quiero pedir un turno para densitometría ósea.">Pedir turno para este estudio</a>
+      </div>
+    </details>
+    <details class="serv">
+      <summary><span class="sigla">BMD</span><span class="tit"><strong>Composición corporal</strong><small>Masa grasa, músculo y hueso</small></span></summary>
+      <div class="cuerpo">
+        <p><b>En qué consiste.</b> Análisis que usa la tecnología de densitometría para medir con precisión la masa grasa, la masa magra y la densidad ósea de todo el cuerpo.</p>
+        <p><b>Para qué sirve.</b> Ideal para seguimiento nutricional, deportistas y programas de descenso de peso o ganancia muscular.</p>
+        <p><b>Qué esperar.</b> Examen rápido, indoloro y sin preparaciones complejas.</p>
+        <a class="btn wa chico" data-wa="Hola, quiero pedir un turno para composición corporal.">Pedir turno para este estudio</a>
+      </div>
+    </details>
+    <details class="serv">
+      <summary><span class="sigla">ECG</span><span class="tit"><strong>Electrocardiograma</strong><small>Función eléctrica del corazón</small></span></summary>
+      <div class="cuerpo">
+        <p><b>En qué consiste.</b> Prueba simple que registra la actividad eléctrica del corazón mediante pequeños parches adhesivos.</p>
+        <p><b>Para qué sirve.</b> Detecta alteraciones del ritmo cardíaco, signos de falta de riego sanguíneo o lesiones previas del músculo cardíaco.</p>
+        <p><b>Qué esperar.</b> El paciente permanece recostado unos minutos mientras el equipo registra los latidos. No causa molestias.</p>
+        <a class="btn wa chico" data-wa="Hola, quiero pedir un turno para electrocardiograma.">Pedir turno para este estudio</a>
+      </div>
+    </details>
+
+  <h2>Contacto</h2>
+  <div class="datos">
+    <a data-wa="Hola, quiero hacer una consulta."><span><b>WhatsApp</b><small>2262 22-1071</small></span></a>
+    <a href="tel:+542262654706"><span><b>Teléfono</b><small>2262 65-4706</small></span></a>
+    <a href="mailto:turnos@imediagnostico.com"><span><b>Mail</b><small>turnos@imediagnostico.com</small></span></a>
+    <a href="https://www.google.com/maps/search/?api=1&query=IMEDIAM+Calle+67+2737+Necochea" target="_blank" rel="noopener"><span><b>Dirección</b><small>Calle 67 N.º 2737, Necochea</small></span></a>
+  </div>
+</main>
+<footer>IMEDIAM · Medicina | Diagnóstico | Educación | Mutualismo</footer>
+
+<script>
+(function () {
+  var WA = '5492262221071';
+  var wa = function (texto) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(texto); };
+  // Enlaces de WhatsApp con el mensaje armado
+  document.querySelectorAll('[data-wa]').forEach(function (a) { a.href = wa(a.getAttribute('data-wa')); a.target = '_blank'; a.rel = 'noopener'; });
+  // Paneles de turno y consulta
+  document.querySelectorAll('[data-abre]').forEach(function (b) {
+    b.setAttribute('aria-expanded', 'false');
+    b.addEventListener('click', function () {
+      var id = b.getAttribute('data-abre'), abrir = document.getElementById(id).hidden;
+      ['turno', 'consulta'].forEach(function (p) { document.getElementById(p).hidden = !(abrir && p === id); });
+      document.querySelectorAll('[data-abre]').forEach(function (o) { o.setAttribute('aria-expanded', String(abrir && o === b)); });
+      if (abrir) { var s = document.getElementById(id); s.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); var c = s.querySelector('select,textarea'); if (c) c.focus({ preventScroll: true }); }
+    });
+  });
+  var estudio = document.getElementById('tu-estudio'), cobertura = document.getElementById('tu-cobertura'), tuEnviar = document.getElementById('tu-enviar');
+  function armarTurno() {
+    var t = 'Hola, quiero pedir un turno' + (estudio.value ? ' para ' + estudio.value.charAt(0).toLowerCase() + estudio.value.slice(1) : '') + '.';
+    if (cobertura.value.trim()) t += ' Cobertura: ' + cobertura.value.trim() + '.';
+    tuEnviar.href = wa(t);
+  }
+  estudio.addEventListener('change', armarTurno); cobertura.addEventListener('input', armarTurno); armarTurno();
+  tuEnviar.target = '_blank'; tuEnviar.rel = 'noopener';
+  var texto = document.getElementById('co-texto'), coEnviar = document.getElementById('co-enviar'), coMail = document.getElementById('co-mail');
+  function armarConsulta() {
+    var t = texto.value.trim() || 'quiero hacer una consulta.';
+    coEnviar.href = wa('Hola, ' + t);
+    coMail.href = 'mailto:turnos@imediagnostico.com?subject=' + encodeURIComponent('Consulta') + '&body=' + encodeURIComponent(texto.value.trim());
+  }
+  texto.addEventListener('input', armarConsulta); armarConsulta();
+  coEnviar.target = '_blank'; coEnviar.rel = 'noopener';
+  if ('serviceWorker' in navigator) window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); });
+})();
+</script>
+<script src="/instalar-app.js" defer></script>
+</body>
+</html>

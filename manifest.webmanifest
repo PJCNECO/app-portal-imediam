@@ -1,17 +1,46 @@
 {
-  "name": "IMEDIAM Portal",
+  "name": "IMEDIAM",
   "short_name": "IMEDIAM",
-  "description": "Portal de IMEDIAM para profesionales",
+  "description": "IMEDIAM: ver estudios, pedir turno, consultas y servicios",
   "lang": "es-AR",
-  "start_url": "/login",
+  "start_url": "/inicio.html",
   "scope": "/",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#ffffff",
-  "theme_color": "#0b5cab",
+  "theme_color": "#0061af",
   "icons": [
-    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ver estudios",
+      "url": "/login"
+    },
+    {
+      "name": "Pedir un turno",
+      "url": "/inicio.html#turno"
+    },
+    {
+      "name": "Servicios",
+      "url": "/inicio.html#servicios"
+    }
   ]
 }

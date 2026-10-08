@@ -1,8 +1,19 @@
 # App de IMEDIAM (PWA) - instalación
 
-Con estos archivos, el portal https://app.imediagnostico.com se puede instalar
-en el celular como una app: ícono en la pantalla de inicio y pantalla completa.
+Con estos archivos, https://app.imediagnostico.com se puede instalar en el
+celular como una app: ícono en la pantalla de inicio y pantalla completa.
 No pasa por App Store ni Google Play.
+
+Al abrirla aparece una pantalla de inicio (`inicio.html`) con cuatro opciones:
+
+- **Ver estudios:** lleva al login del portal.
+- **Pedir un turno:** se elige el estudio y se abre WhatsApp con el mensaje armado.
+- **Hacer una consulta:** por WhatsApp o por mail.
+- **Servicios:** los estudios que hace IMEDIAM, con su descripción.
+
+La pantalla de inicio es una sola página, sin base de datos ni formularios que
+guarden nada: los turnos y las consultas se mandan por WhatsApp
+(2262 22-1071), teléfono (2262 65-4706) o mail (turnos@imediagnostico.com).
 
 ## Para quien administra el portal
 
@@ -10,7 +21,8 @@ No pasa por App Store ni Google Play.
 
 - `manifest.webmanifest`  ->  https://app.imediagnostico.com/manifest.webmanifest
 - `sw.js`                 ->  https://app.imediagnostico.com/sw.js
-- `instalar-app.js`       ->  https://app.imediagnostico.com/instalar-app.js  (opcional)
+- `inicio.html`           ->  https://app.imediagnostico.com/inicio.html
+- `instalar-app.js`       ->  https://app.imediagnostico.com/instalar-app.js
 - carpeta `icons/`        ->  https://app.imediagnostico.com/icons/...
 
 `sw.js` tiene que quedar en la raíz (no en una subcarpeta) y servirse por HTTPS.
@@ -27,6 +39,17 @@ cartel "Instalá la app de IMEDIAM". En Android abre la instalación con un
 botón; en iPhone explica los dos pasos. No aparece si la app ya está
 instalada, y si la persona lo cierra no vuelve a salir por 30 días.
 
+### Si se prefiere que la app abra directo en el login
+
+En `manifest.webmanifest`, cambiar `"start_url": "/inicio.html"` por
+`"start_url": "/login"`. La pantalla de inicio se puede dejar igual, como
+página aparte.
+
+### Para cambiar los servicios, teléfonos o textos
+
+Todo está en `inicio.html`: cada estudio es un bloque `<details class="serv">`
+y el número de WhatsApp está al principio del `<script>` (`var WA`).
+
 ### 3. Íconos
 
 Los de la carpeta `icons/` ya son los definitivos: el globo del logo de
@@ -38,7 +61,7 @@ con los mismos nombres y tamaños:
 - icon-maskable-512.png   512x512, logo centrado ocupando ~60% (bordes libres)
 - apple-touch-icon.png    180x180, fondo sólido (sin transparencia)
 
-El color `#0b5cab` (en el manifest, el snippet y instalar-app.js) se puede
+El color `#0061af` (en el manifest, el snippet y instalar-app.js) se puede
 cambiar por el de la marca.
 
 ### 4. Probar

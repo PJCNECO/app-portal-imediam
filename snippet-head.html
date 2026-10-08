@@ -1,6 +1,6 @@
 <!-- Pegar dentro del <head> de TODAS las paginas del portal (o al menos /login) -->
 <link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#0b5cab">
+<meta name="theme-color" content="#0061af">
 
 <!-- iPhone / iPad -->
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,7 +13,7 @@
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('/sw.js');
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
     });
   }
 </script>
